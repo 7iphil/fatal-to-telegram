@@ -6,7 +6,7 @@
  * @param string $text Raw text to escape
  * @return string Safe MarkdownV2-escaped string
  */
-function ftt_escape_markdown(string $text): string {
+function fttg_escape_markdown(string $text): string {
     $escape_chars = [
         '_', '*', '[', ']', '(', ')', '~', '`',
         '>', '#', '+', '-', '=', '|', '{', '}',
@@ -20,7 +20,7 @@ function ftt_escape_markdown(string $text): string {
     return $text;
 }
 
-function ftt_shutdown_handler() {
+function fttg_shutdown_handler() {
 
     $error = error_get_last();
 
@@ -28,7 +28,7 @@ function ftt_shutdown_handler() {
 
     if (isset($error['type']) && in_array($error['type'], $error_types)) {
 
-        if (!get_option('ftt_enabled')) return;
+        if (!get_option('fttg_enabled')) return;
 
         $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         
@@ -45,11 +45,11 @@ function ftt_shutdown_handler() {
         $raw_text = "file: {$file}\nline: {$line}\ntype: {$type}\nmessage: {$message_text}";
 
         // escape
-        $escaped_file = ftt_escape_markdown($file);
-        $escaped_url = ftt_escape_markdown($url);
-        $escaped_line = ftt_escape_markdown((string)$line);
-        $escaped_raw = ftt_escape_markdown($raw_text);
-        $msg = ftt_escape_markdown($msg);
+        $escaped_file = fttg_escape_markdown($file);
+        $escaped_url = fttg_escape_markdown($url);
+        $escaped_line = fttg_escape_markdown((string)$line);
+        $escaped_raw = fttg_escape_markdown($raw_text);
+        $msg = fttg_escape_markdown($msg);
 
         $message = "*💥 Fatal Error Detected*" . "\n"
                 . "🔗 *URL:* {$escaped_url}\n"
@@ -58,17 +58,17 @@ function ftt_shutdown_handler() {
                 . "📍 *Line:* {$escaped_line}\n"
                 . "```{$escaped_raw}```";
 
-        ftt_send_telegram_message($message);
+        fttg_send_telegram_message($message);
 
     }
 
 }
 
-function ftt_send_telegram_message($text) {
+function fttg_send_telegram_message($text) {
 
-    $token = trim(get_option('ftt_bot_token'));
+    $token = trim(get_option('fttg_bot_token'));
 
-    $chat_id = trim(get_option('ftt_chat_id'));
+    $chat_id = trim(get_option('fttg_chat_id'));
 
     if (!$token || !$chat_id) return;
 
@@ -82,7 +82,7 @@ function ftt_send_telegram_message($text) {
 
     if (is_wp_error($response)) {
 
-        error_log('Fatal to Telegram: ' . $response->get_error_message());
+        error_log('Fatal message to Telegram: ' . $response->get_error_message());
 
     }
 
