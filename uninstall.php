@@ -13,6 +13,6 @@ $mu_plugin_file = WP_CONTENT_DIR . '/mu-plugins/fatal-to-telegram-loader.php';
 
 if (file_exists($mu_plugin_file)) {
 
-    @unlink($mu_plugin_file);
+    wp_delete_file($mu_plugin_file);
 
 }

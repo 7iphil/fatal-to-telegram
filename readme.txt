@@ -4,12 +4,12 @@ Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
 
-Sends fatal PHP errors from your WordPress site directly to a Telegram chat using a lightweight notifier and early MU-plugin loader. Built for production use.
+Sends fatal PHP errors to Telegram using an early MU-plugin loader. Ideal for monitoring production crashes.
 
 == Description ==
 
@@ -73,3 +73,6 @@ Fatal message to Telegram is a 100% free WordPress plugin without any limitation
 * [Changed] Change Plugin Name (Fatal to Telegram -> Fatal message to Telegram)
 * [Changed] Change to the prefix function and constant names(ftt -> fttg)
 * [Added] Added information to the setting-page about the operation of the telegram bot and the limitations of the Telegram API
+
+= 1.2 =
+* [Fixed] Compliance with the verification Plugin Check (PCP) 1.5.0 standards
