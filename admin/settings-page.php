@@ -28,6 +28,7 @@ function fttg_settings_page() {
     ?>
     <div class="wrap">
         <h1><?php echo esc_html( __( 'Fatal message to Telegram Settings', 'fatal-to-telegram' ) ); ?></h1>
+        <?php settings_errors(); ?>
         <h2><?php echo esc_html( __( 'Plugin Overview', 'fatal-to-telegram' ) ); ?></h2>
         <p>
             <strong><?php echo esc_html( __( 'Fatal message to Telegram', 'fatal-to-telegram' ) ); ?></strong> <?php echo esc_html( __( "monitors your WordPress site for fatal PHP errors and instantly sends detailed crash reports to your Telegram chat.
