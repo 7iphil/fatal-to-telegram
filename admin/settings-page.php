@@ -29,13 +29,7 @@ function fttg_settings_page() {
     <div class="wrap">
         <h1><?php echo esc_html( __( 'Fatal message to Telegram Settings', 'fatal-to-telegram' ) ); ?></h1>
         <?php settings_errors(); ?>
-        <h2><?php echo esc_html( __( 'Plugin Overview', 'fatal-to-telegram' ) ); ?></h2>
-        <p>
-            <strong><?php echo esc_html( __( 'Fatal message to Telegram', 'fatal-to-telegram' ) ); ?></strong> <?php echo esc_html( __( "monitors your WordPress site for fatal PHP errors and instantly sends detailed crash reports to your Telegram chat.
-            It's built for developers and sysadmins who want real-time error visibility without digging through logs. 📡 Keep your site monitored even while you sleep.", 'fatal-to-telegram' ) ); ?>
-        </p>
-        <p><strong><?php echo esc_html( __( 'Remember', 'fatal-to-telegram' ) ); ?>:</strong> <?php echo esc_html( __( 'This plugin creates a', 'fatal-to-telegram' ) ); ?> <code>mu-plugin</code> <?php echo esc_html( __( 'loader for early error detection. If you deactivate the plugin, the loader will stop working too', 'fatal-to-telegram' ) ); ?>.</p>
-        <h3>🔧 <?php echo esc_html( __( 'Features', 'fatal-to-telegram' ) ); ?>:</h3>
+        <h2>🔧 <?php echo esc_html( __( 'Features', 'fatal-to-telegram' ) ); ?>:</h2>
         <ul>
             <li>✅ <?php echo esc_html( __( 'Sends', 'fatal-to-telegram' ) ); ?> <strong><?php echo esc_html( __( 'fatal errors', 'fatal-to-telegram' ) ); ?></strong> (E_ERROR, E_PARSE, etc.) <?php echo esc_html( __( 'directly to Telegram', 'fatal-to-telegram' ) ); ?></li>
             <li>✅ <?php echo esc_html( __( 'Configurable Bot Token and Chat ID via this settings page', 'fatal-to-telegram' ) ); ?></li>
@@ -49,6 +43,7 @@ function fttg_settings_page() {
             <li>✅ <?php echo esc_html( __( "You're developing a plugin/theme and want instant crash alerts", 'fatal-to-telegram' ) ); ?></li>
         </ul>
         <hr>
+        <p><strong><?php echo esc_html( __( 'Remember', 'fatal-to-telegram' ) ); ?>:</strong> <?php echo esc_html( __( 'This plugin creates a', 'fatal-to-telegram' ) ); ?> <code>mu-plugin</code> <?php echo esc_html( __( 'loader for early error detection. If you Delete the plugin, the loader will stop working', 'fatal-to-telegram' ) ); ?>.</p>
         <form method="post" action="options.php" autocomplete="off">
             <?php settings_fields('fttg_settings_group'); ?>
             <?php do_settings_sections('fttg_settings_group'); ?>

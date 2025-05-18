@@ -17,6 +17,16 @@
 
  if (!defined('ABSPATH')) exit;
 
+ add_action('plugins_loaded', 'fttg_load_textdomain');
+
+function fttg_load_textdomain() 
+{
+
+    load_plugin_textdomain('fatal-to-telegram', false, dirname(plugin_basename(__FILE__)) . '/languages');
+    
+}
+
+
  add_filter('plugin_row_meta', 'fttg_plugin_row_meta', 10, 2);
  
  function fttg_plugin_row_meta($links, $file) {
