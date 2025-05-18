@@ -4,7 +4,7 @@ Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
@@ -76,3 +76,6 @@ Fatal message to Telegram is a 100% free WordPress plugin without any limitation
 
 = 1.2 =
 * [Fixed] Compliance with the verification Plugin Check (PCP) 1.5.0 standards
+
+= 1.3 =
+* [Added] Added translation into Russian
