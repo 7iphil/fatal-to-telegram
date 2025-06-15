@@ -5,11 +5,11 @@
  * @param string $str The message to send.
  * @return void
  */
-function _ftt(string $str): void {
+function _fttg(string $str): void {
 
     if (!is_string($str)) return;
 
-    ftt_send_telegram_message($str);
+    fttg_send_telegram_message($str);
 
 }
 
@@ -19,7 +19,7 @@ function _ftt(string $str): void {
  * @param array $array The array to iterate.
  * @return void
  */
-function _ftt_array(array $array): void {
+function _fttg_array(array $array): void {
 
     if (!is_array($array)) return;
 
@@ -27,7 +27,7 @@ function _ftt_array(array $array): void {
 
         $message = 'Key: ' . $key . ' Value: ' . $value;
 
-        ftt_send_telegram_message($message);
+        fttg_send_telegram_message($message);
 
     }
     
