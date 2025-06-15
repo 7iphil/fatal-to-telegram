@@ -14,8 +14,6 @@ jobs:
 
       - name: Deploy to WordPress.org
         uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          generate-zip: true
         env:
-          WP_ORG_USERNAME: ${{ secrets.APP_PASSWORD_USERNAME }}
-          WP_ORG_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
