@@ -4,7 +4,7 @@ Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
@@ -34,6 +34,15 @@ Built for developers and sysadmins, this plugin provides early crash detection u
 4. Find the 'Fatal message to Telegram' plugin and activate.
 5. Done!
 
+= СREATE A TELEGRAM BOT =
+
+1. Open Telegram and search for the user **@BotFather**.
+2. Type `/start` and follow instructions to create a new bot.
+3. Choose a name and a username for your bot.
+4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
+5. Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates.
+6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
+
 === Features ===
 * 📡 Sends fatal PHP errors (E_ERROR, E_PARSE, etc.) directly to Telegram
 * ⚙️ Configurable via WordPress admin (Tools > Fatal message to Telegram)
@@ -61,9 +70,34 @@ _fttg_array(['a' => 1, 'b' => 2, 'c' => 'hello']);
 
 Fatal message to Telegram is a 100% free WordPress plugin without any limitations on its features.
 
+= How to create a Telegram bot? =
+
+1. Open Telegram and search for the user **@BotFather**.
+2. Type `/start` and follow instructions to create a new bot.
+3. Choose a name and a username for your bot.
+4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
+5. Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates.
+6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
+
+See Screenshots section below for a step-by-step guide with images.
+
+== External services ==
+
+This plugin connects to the following external services:
+
+=== Telegram Bot API ===  
+Used to send login alert messages to your Telegram bot/chat.  
+🔗 [Telegram API Docs](https://core.telegram.org/bots/api)  
+📜 [Telegram Privacy Policy](https://telegram.org/privacy)
+
+Data sent: Chat ID, bot token (from your settings), and message with IP/location/user agent info.  
+Data is only sent when someone logs in and notifications are enabled.
+All data is not stored locally exclude Chat ID, bot token from your settings.
+
 == Screenshots ==
 
-1. Fatal message to Telegram setting page: Tools > Fatal message to Telegram.
+1. Search for @BotFather in Telegram | Create new bot in @BotFather | Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates
+2. Paste bot token and chat ID into plugin settings: Tools > Fatal message to Telegram.
 
 == Changelog ==
 = 1.0 =
@@ -79,3 +113,9 @@ Fatal message to Telegram is a 100% free WordPress plugin without any limitation
 
 = 1.3 =
 * [Added] Added translation into Russian
+
+== Upgrade Notice ==
+
+= 1.3.1 =
+* [Added] Added External service Info
+* [Added] Added screenshot and step-by-step guide on how to create a Telegram bot, obtain a token, and find your chat ID.
