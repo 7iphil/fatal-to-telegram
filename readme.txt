@@ -114,8 +114,6 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 = 1.3 =
 * [Added] Added translation into Russian
 
-== Upgrade Notice ==
-
 = 1.4 =
 * [Added] Added External service Info
 * [Added] Added screenshot and step-by-step guide on how to create a Telegram bot, obtain a token, and find your chat ID.
