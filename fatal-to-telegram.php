@@ -7,7 +7,7 @@
  * Author:              iPhil
  * Author URI:          https://iphil.top
  * Requires at least:   5.3
- * Tested up to:        6.8
+ * Tested up to:        6.8.1
  * License:             GPLv2 or later
  * Uninstall:           true
  * 
