@@ -4,7 +4,7 @@ Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
 Tested up to: 6.8.1
 Requires PHP: 7.2
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
