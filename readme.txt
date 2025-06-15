@@ -4,7 +4,7 @@ Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.3.1
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
@@ -40,7 +40,7 @@ Built for developers and sysadmins, this plugin provides early crash detection u
 2. Type `/start` and follow instructions to create a new bot.
 3. Choose a name and a username for your bot.
 4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
-5. Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates.
+5. Find and copy your chat ID here: https://api.telegram.org/bot`your_token`/getUpdates.
 6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
 
 === Features ===
@@ -76,7 +76,7 @@ Fatal message to Telegram is a 100% free WordPress plugin without any limitation
 2. Type `/start` and follow instructions to create a new bot.
 3. Choose a name and a username for your bot.
 4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
-5. Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates.
+5. Find and copy your chat ID here: https://api.telegram.org/bot`your_token`/getUpdates.
 6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
 
 See Screenshots section below for a step-by-step guide with images.
@@ -96,7 +96,7 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 
 == Screenshots ==
 
-1. Search for @BotFather in Telegram | Create new bot in @BotFather | Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates
+1. Search for @BotFather in Telegram | Create new bot in @BotFather | Find and copy your chat ID here: https://api.telegram.org/bot`your_token`/getUpdates
 2. Paste bot token and chat ID into plugin settings: Tools > Fatal message to Telegram.
 
 == Changelog ==
@@ -116,6 +116,6 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 
 == Upgrade Notice ==
 
-= 1.3.1 =
+= 1.4 =
 * [Added] Added External service Info
 * [Added] Added screenshot and step-by-step guide on how to create a Telegram bot, obtain a token, and find your chat ID.

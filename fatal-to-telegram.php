@@ -3,7 +3,7 @@
  * Plugin Name:         Fatal message to Telegram
  * Plugin URI:          https://iphil.top/portfolio/fatal-to-telegram/
  * Description:         Sends PHP fatal errors to Telegram instantly. Creates early loader via MU-plugin.
- * Version:             1.3.1
+ * Version:             1.4
  * Author:              iPhil
  * Author URI:          https://iphil.top
  * Requires at least:   5.3
