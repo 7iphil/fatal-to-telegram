@@ -76,7 +76,7 @@ Fatal message to Telegram is a 100% free WordPress plugin without any limitation
 2. Type `/start` and follow instructions to create a new bot.
 3. Choose a name and a username for your bot.
 4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
-5. Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates.
+5. Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates.
 6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
 
 See Screenshots section below for a step-by-step guide with images.
@@ -96,7 +96,7 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 
 == Screenshots ==
 
-1. Search for @BotFather in Telegram | Create new bot in @BotFather | Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates
+1. Search for @BotFather in Telegram | Create new bot in @BotFather | Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates
 2. Paste bot token and chat ID into plugin settings: Tools > Fatal message to Telegram.
 
 == Changelog ==
