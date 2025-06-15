@@ -40,7 +40,7 @@ Built for developers and sysadmins, this plugin provides early crash detection u
 2. Type `/start` and follow instructions to create a new bot.
 3. Choose a name and a username for your bot.
 4. After creation, **BotFather** will send you a token (example: 123456789:ABCdefGHIjkLmnoPQRstuVWxyZ).
-5. Find and copy your chat ID here: https://api.telegram.org/bot<your_token>/getUpdates.
+5. Find and copy your chat ID here: https://api.telegram.org/bot**your_token**/getUpdates.
 6. Paste **bot token** and **chat ID** into plugin settings: **Tools > Fatal message to Telegram**.
 
 === Features ===
