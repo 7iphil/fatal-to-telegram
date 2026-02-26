@@ -2,9 +2,9 @@
 Contributors: philstudio
 Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
-Tested up to: 6.8.1
+Tested up to: 6.9.1
 Requires PHP: 7.2
-Stable tag: 1.4.1
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
@@ -118,3 +118,6 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 * [Added] Added External service Info
 * [Added] Added screenshot and step-by-step guide on how to create a Telegram bot, obtain a token, and find your chat ID.
 * [Added] Tested up to: 6.8.1
+
+= 1.5 =
+* [Added] Tested up to: 6.9.1
