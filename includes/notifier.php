@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 /**
  * Escapes a string for safe use in Telegram MarkdownV2
  *
@@ -44,12 +46,14 @@ function fttg_shutdown_handler() {
 		$type          = isset( $error['type'] ) ? $error['type'] : 'n/a';
 		$message_text  = isset( $error['message'] ) ? $error['message'] : 'No message';
 		$msg           = explode( ' in ', $message_text )[0] ?? 'n/a';
-		$raw_text      = "file: {$file}\nline: {$line}\ntype: {$type}\nmessage: {$message_text}";
+		$timestamp     = current_time( 'mysql' );
+		$raw_text      = "file: {$file}\nline: {$line}\ntype: {$type}\nmessage: {$message_text}\ntime: {$timestamp}";
 
 		// Escape for Telegram
 		$escaped_file = fttg_escape_markdown( $file );
 		$escaped_url  = fttg_escape_markdown( $url );
 		$escaped_line = fttg_escape_markdown( (string) $line );
+		$escaped_time = fttg_escape_markdown( $timestamp );
 		$escaped_raw  = fttg_escape_markdown( $raw_text );
 		$msg          = fttg_escape_markdown( $msg );
 
@@ -58,6 +62,7 @@ function fttg_shutdown_handler() {
 			. "📪 *Message:* {$msg}\n"
 			. "🗃 *File:* {$escaped_file}\n"
 			. "📍 *Line:* {$escaped_line}\n"
+			. "🕐 *Time:* {$escaped_time}\n"
 			. "```{$escaped_raw}```";
 
 		fttg_send_telegram_message( $message );

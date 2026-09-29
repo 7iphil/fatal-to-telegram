@@ -2,9 +2,9 @@
 Contributors: philstudio
 Tags: fatal error, telegram, error handler, crash report, debug
 Requires at least: 5.3
-Tested up to: 6.9.1
+Tested up to: 7.1.2
 Requires PHP: 7.2
-Stable tag: 1.5.1
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://yoomoney.ru/to/4100141266469
@@ -49,6 +49,7 @@ Built for developers and sysadmins, this plugin provides early crash detection u
 * 🧱 Loads early using a mu-plugin for maximum reliability
 * 🔐 Automatically installs/removes the loader during plugin activation/remove
 * 💬 Includes developer-friendly helper functions for manual debugging
+* 🧪 Send test message to verify bot configuration
 
 === Helper Functions ===
 Sends a plain string message to your configured Telegram chat.
@@ -124,3 +125,8 @@ All data is not stored locally exclude Chat ID, bot token from your settings.
 
 = 1.5.1 =
 * [Changed] Change Plugin logo and banners
+
+= 1.6 =
+* [Added] Test message button to verify Telegram configuration
+* [Added] Added time position to error messages
+* [Fixed] Added ABSPATH security check to all PHP files

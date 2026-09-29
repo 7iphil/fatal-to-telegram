@@ -328,3 +328,59 @@ msgstr "Вы увидите ответ JSON, содержащий ваши"
 #: admin/settings-page.php:43 trunk/admin/settings-page.php:49
 msgid "You're developing a plugin/theme and want instant crash alerts"
 msgstr "Вы разрабатываете плагин/тему и хотите мгновенные уведомления о сбоях"
+
+#: admin/settings-page.php:69 trunk/admin/settings-page.php:74
+msgid "Test Configuration"
+msgstr "Проверка конфигурации"
+
+#: admin/settings-page.php:70 trunk/admin/settings-page.php:75
+msgid "Send a test message to verify your bot configuration"
+msgstr "Отправьте тестовое сообщение для проверки конфигурации бота"
+
+#: admin/settings-page.php:72 trunk/admin/settings-page.php:77
+msgid "Test Message"
+msgstr "Тестовое сообщение"
+
+#: admin/settings-page.php:73 trunk/admin/settings-page.php:78
+msgid "Send Test Fatal Error Message"
+msgstr "Отправить тестовое сообщение о фатальной ошибке"
+
+#: admin/settings-page.php:83 trunk/admin/settings-page.php:88
+msgid "Sending..."
+msgstr "Отправка..."
+
+#: admin/settings-page.php:89 trunk/admin/settings-page.php:94
+msgid "Request failed. Please try again."
+msgstr "Запрос завершился неудачно. Попробуйте ещё раз."
+
+#: admin/settings-page.php:206 trunk/admin/settings-page.php:211
+msgid "You do not have sufficient permissions"
+msgstr "У вас недостаточно прав"
+
+#: admin/settings-page.php:211 trunk/admin/settings-page.php:216
+msgid "Security check failed"
+msgstr "Ошибка проверки безопасности"
+
+#: admin/settings-page.php:220 trunk/admin/settings-page.php:225
+msgid "Please configure Bot Token and Chat ID first"
+msgstr "Сначала настройте токен бота и ID чата"
+
+#: admin/settings-page.php:228 trunk/admin/settings-page.php:233
+msgid "Test fatal error notification"
+msgstr "Тестовое уведомление о фатальной ошибке"
+
+#: admin/settings-page.php:229 trunk/admin/settings-page.php:234
+msgid "/test/file.php"
+msgstr "/test/file.php"
+
+#: admin/settings-page.php:249 trunk/admin/settings-page.php:254
+msgid "Test message sent successfully! Check your Telegram chat."
+msgstr "Тестовое сообщение успешно отправлено! Проверьте чат в Telegram."
+
+#: admin/settings-page.php:254 trunk/admin/settings-page.php:259
+msgid "Failed to send test message. Please check your token and chat ID."
+msgstr "Не удалось отправить тестовое сообщение. Проверьте токен и ID чата."
+
+#: admin/settings-page.php:265 trunk/admin/settings-page.php:270
+msgid "Unknown error"
+msgstr "Неизвестная ошибка"

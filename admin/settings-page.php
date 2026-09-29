@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 function fttg_register_settings() {
 
     register_setting('fttg_settings_group', 'fttg_bot_token', [
@@ -64,6 +66,21 @@ function fttg_settings_page() {
             <?php submit_button(); ?>
         </form>
         <hr>
+        <h3>🧪 <?php echo esc_html( __( 'Test Configuration', 'fatal-to-telegram' ) ); ?></h3>
+        <p><?php echo esc_html( __( 'Send a test message to verify your bot configuration', 'fatal-to-telegram' ) ); ?>:</p>
+        <table class="form-table">
+            <tr>
+                <th scope="row"><?php echo esc_html( __( 'Test Message', 'fatal-to-telegram' ) ); ?></th>
+                <td>
+                    <button type="button" id="fttg-send-test" class="button button-secondary" data-nonce="<?php echo esc_attr( wp_create_nonce( 'fttg_test_message_nonce' ) ); ?>">
+                        <?php echo esc_html( __( 'Send Test Fatal Error Message', 'fatal-to-telegram' ) ); ?>
+                    </button>
+                    <div id="fttg-test-result" style="margin-top: 10px; padding: 8px 12px; border-radius: 4px; display: none; font-weight: 500;"></div>
+                </td>
+            </tr>
+        </table>
+        <?php fttg_test_message_script(); ?>
+        <hr>
         <h3>🧪 <?php echo esc_html( __( 'Debugging Helpers', 'fatal-to-telegram' ) ); ?>:</h3>
         <p><?php echo esc_html( __( 'Use these helper functions in your code to send custom data to Telegram for debugging', 'fatal-to-telegram' ) ); ?>:</p>
 
@@ -88,9 +105,9 @@ function fttg_settings_page() {
 
             <p>
                 <?php echo esc_html( __('Then open the following URL (replacing', 'fatal-to-telegram' ) ); ?> 
-                <code>&lt;your_token&gt;</code> 
+                <code><your_token></code> 
                 <?php echo esc_html( __('with your actual bot token):', 'fatal-to-telegram' ) ); ?><br>
-                <code>https://api.telegram.org/bot&lt;your_token&gt;/getUpdates</code>
+                <code>https://api.telegram.org/bot<your_token>/getUpdates</code>
             </p>
 
             <p>
@@ -147,6 +164,132 @@ function fttg_settings_page() {
     </div>
     <?php
 }
+
+function fttg_test_message_script() {
+    ?>
+    <script>
+    (function($) {
+        $(document).ready(function() {
+            var $btn = $('#fttg-send-test');
+            var $result = $('#fttg-test-result');
+
+            $btn.on('click', function(e) {
+                e.preventDefault();
+                
+                $btn.prop('disabled', true);
+                $result.css({
+                    'background-color': '#f0f0f0',
+                    'border-left': '4px solid #ccc',
+                    'color': '#555'
+                }).text('<?php echo esc_js( __( 'Sending...', 'fatal-to-telegram' ) ); ?>').show();
+
+                $.post(ajaxurl, {
+                    action: 'fttg_send_test_message',
+                    nonce: $btn.data('nonce')
+                }, function(response) {
+                    $btn.prop('disabled', false);
+                    if (response.success) {
+                        $result.css({
+                            'background-color': '#ecf7ed',
+                            'border-left': '4px solid #00a32a',
+                            'color': '#00a32a'
+                        }).text(response.data.message);
+                    } else {
+                        $result.css({
+                            'background-color': '#fcf0f1',
+                            'border-left': '4px solid #d63638',
+                            'color': '#d63638'
+                        }).text(response.data.message);
+                    }
+                }).fail(function() {
+                    $btn.prop('disabled', false);
+                    $result.css({
+                        'background-color': '#fcf0f1',
+                        'border-left': '4px solid #d63638',
+                        'color': '#d63638'
+                    }).text('<?php echo esc_js( __( 'Request failed. Please try again.', 'fatal-to-telegram' ) ); ?>');
+                });
+            });
+        });
+    })(jQuery);
+    </script>
+    <?php
+}
+
+function fttg_ajax_send_test_message() {
+
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error([
+            'message' => __( 'You do not have sufficient permissions', 'fatal-to-telegram' )
+        ]);
+    }
+
+    if ( ! check_ajax_referer( 'fttg_test_message_nonce', 'nonce', false ) ) {
+        wp_send_json_error([
+            'message' => __( 'Security check failed', 'fatal-to-telegram' )
+        ]);
+    }
+
+    $token   = trim( get_option( 'fttg_bot_token' ) );
+    $chat_id = trim( get_option( 'fttg_chat_id' ) );
+
+    if ( empty( $token ) || empty( $chat_id ) ) {
+        wp_send_json_error([
+            'message' => __( 'Please configure Bot Token and Chat ID first', 'fatal-to-telegram' )
+        ]);
+    }
+
+    $site_url = get_site_url();
+    $timestamp = current_time( 'mysql' );
+
+    $escaped_url     = fttg_escape_markdown( $site_url );
+    $escaped_message = fttg_escape_markdown( __( 'Test fatal error notification', 'fatal-to-telegram' ) );
+    $escaped_file    = fttg_escape_markdown( __( '/test/file.php', 'fatal-to-telegram' ) );
+    $escaped_line    = fttg_escape_markdown( '42' );
+    $escaped_time    = fttg_escape_markdown( $timestamp );
+
+    $raw_text = "file: /test/file.php\nline: 42\ntype: E_USER_ERROR (TEST)\nmessage: " . __( 'Test fatal error notification', 'fatal-to-telegram' ) . "\ntime: " . $timestamp;
+
+    $escaped_raw = fttg_escape_markdown( $raw_text );
+
+    $message = "*💥 TEST Fatal Error Detected*\n"
+        . "🔗 *URL:* {$escaped_url}\n"
+        . "📪 *Message:* {$escaped_message}\n"
+        . "🗃 *File:* {$escaped_file}\n"
+        . "📍 *Line:* {$escaped_line}\n"
+        . "🕐 *Time:* {$escaped_time}\n"
+        . "```{$escaped_raw}```";
+
+    $api_url = "https://api.telegram.org/bot{$token}/sendMessage?" . http_build_query([
+        'chat_id'    => $chat_id,
+        'text'       => $message,
+        'parse_mode' => 'MarkdownV2',
+    ]);
+
+    $response = wp_remote_get( $api_url );
+
+    if ( is_wp_error( $response ) ) {
+        wp_send_json_error([
+            'message' => __( 'Failed to send test message. Please check your token and chat ID.', 'fatal-to-telegram' )
+        ]);
+    }
+
+    $body = wp_remote_retrieve_body( $response );
+    $data = json_decode( $body, true );
+
+    if ( isset( $data['ok'] ) && $data['ok'] ) {
+        wp_send_json_success([
+            'message' => __( 'Test message sent successfully! Check your Telegram chat.', 'fatal-to-telegram' )
+        ]);
+    }
+
+    $error_desc = isset( $data['description'] ) ? $data['description'] : __( 'Unknown error', 'fatal-to-telegram' );
+    wp_send_json_error([
+        'message' => $error_desc
+    ]);
+}
+
+add_action( 'wp_ajax_fttg_send_test_message', 'fttg_ajax_send_test_message' );
 
 function fttg_add_settings_menu() {
     

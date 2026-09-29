@@ -1,4 +1,7 @@
 <?php
+
+if (!defined('ABSPATH')) exit;
+
 /**
  * Sends a raw string to the configured Telegram bot.
  *
